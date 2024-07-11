@@ -1,3 +1,9 @@
 from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin
 
-# Register your models here.
+from workshop.models import Vehicle, Client, Mechanic, Manager
+
+admin.site.register(Vehicle)
+admin.site.register(Client)
+admin.site.register(Mechanic)
+admin.site.register(Manager, UserAdmin)

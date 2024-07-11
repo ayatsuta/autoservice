@@ -8,6 +8,9 @@ class Manager(AbstractUser):
     class Meta:
         ordering = ("username",)
 
+    def __str__(self):
+        return f"{self.username} : {self.first_name} {self.last_name}"
+
 
 class Vehicle(models.Model):
     model = models.CharField(max_length=63)
@@ -29,6 +32,9 @@ class Vehicle(models.Model):
         related_name="managed_vehicles"
     )
 
+    class Meta:
+        ordering = ("model",)
+
     def __str__(self):
         return f"{self.model} - {self.owner}"
 
@@ -45,3 +51,6 @@ class Client(models.Model):
     name = models.CharField(max_length=63)
     company = models.CharField(max_length=63, null=True, blank=True)
     phone = models.CharField(max_length=63, null=True, blank=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.phone}"
