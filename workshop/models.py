@@ -25,7 +25,23 @@ class Vehicle(models.Model):
     manager = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.SET_NULL,
-        null=True)
+        null=True,
+        related_name="managed_vehicles"
+    )
 
     def __str__(self):
         return f"{self.model} - {self.owner}"
+
+
+class Mechanic(models.Model):
+    name = models.CharField(max_length=63)
+    speciality = models.CharField(max_length=63)
+
+    def __str__(self):
+        return f"{self.name} - {self.speciality}"
+
+
+class Client(models.Model):
+    name = models.CharField(max_length=63)
+    company = models.CharField(max_length=63, null=True, blank=True)
+    phone = models.CharField(max_length=63, null=True, blank=True)
