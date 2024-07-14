@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> Vehicle List</h1>
+  {% if vehicle_list %}
+    <ul>
+    {% for vehicle in vehicle_list %}
+      <li> {{ vehicle.model }} ({{ vehicle.owner }})</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{%  endblock %}

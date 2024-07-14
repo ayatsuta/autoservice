@@ -23,3 +23,7 @@ class MechanicListView(generic.ListView):
     model = Mechanic
     template_name = "workshop/mechanic_list.html"
     context_object_name = "mechanic_list"
+
+
+class VehicleListView(generic.ListView):
+    model = Vehicle
