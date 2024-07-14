@@ -1,5 +1,6 @@
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.views import generic
 
 from workshop.models import Manager, Client, Vehicle, Mechanic
 
@@ -16,3 +17,9 @@ def index(request: HttpRequest) -> HttpResponse:
         "num_mechanics": num_mechanics,
     }
     return render(request, "workshop/index.html", context=context)
+
+
+class MechanicListView(generic.ListView):
+    model = Mechanic
+    template_name = "workshop/mechanic_list.html"
+    context_object_name = "mechanic_list"
