@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> Client List</h1>
+  {% if client_list %}
+    <ul>
+    {% for client in client_list %}
+      <li> {{ client.name }} ({{ client.company }}, {{ client.phone }})</li>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{%  endblock %}

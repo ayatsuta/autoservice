@@ -25,3 +25,7 @@ class MechanicListView(generic.ListView):
 
 class VehicleListView(generic.ListView):
     model = Vehicle
+
+
+class ClientListView(generic.ListView):
+    model = Client
