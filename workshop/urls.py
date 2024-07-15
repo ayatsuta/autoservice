@@ -6,6 +6,7 @@ from workshop.views import (
     MechanicDetailView,
     VehicleListView,
     ClientListView,
+    ClientDetailView,
     ManagerListView,
     ManagerDetailView,
     VehicleDetailView,
@@ -20,6 +21,7 @@ urlpatterns = [
     path("vehicles/", VehicleListView.as_view(), name="vehicle-list"),
     path("vehicles/<int:pk>/", VehicleDetailView.as_view(), name="vehicle-detail"),
     path("clients/", ClientListView.as_view(), name="client-list"),
+    path("clients/<int:pk>/", ClientDetailView.as_view(), name="client-detail"),
 ]
 
 app_name = "workshop"

@@ -64,3 +64,6 @@ class Client(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.phone}"
+
+    def get_absolute_url(self):
+        return reverse("workshop:client-detail", args=[str(self.id)])

@@ -33,6 +33,10 @@ class MechanicListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
 
+class MechanicDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Mechanic
+
+
 class VehicleListView(LoginRequiredMixin, generic.ListView):
     model = Vehicle
     paginate_by = 10
@@ -47,5 +51,6 @@ class ClientListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
 
-class MechanicDetailView(LoginRequiredMixin, generic.DetailView):
-    model = Mechanic
+class ClientDetailView(LoginRequiredMixin, generic.DetailView):
+    model = Client
+
