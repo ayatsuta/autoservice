@@ -40,3 +40,7 @@ class VehicleDetailView(generic.DetailView):
 class ClientListView(generic.ListView):
     model = Client
     paginate_by = 10
+
+
+class MechanicDetailView(generic.DetailView):
+    model = Mechanic

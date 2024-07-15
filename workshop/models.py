@@ -50,6 +50,10 @@ class Mechanic(models.Model):
     def __str__(self):
         return f"{self.name} - {self.speciality}"
 
+    def get_absolute_url(self):
+        return reverse("workshop:mechanic-detail", args=[str(self.id)])
+
+
 
 class Client(models.Model):
     name = models.CharField(max_length=63)
