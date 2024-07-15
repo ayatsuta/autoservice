@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Vehicle: {{ vehicle.model }}</h1>
+  <p><strong>Year: </strong>{{ vehicle.year }}</p>
+  <p><strong>VIN: </strong>{{ vehicle.VIN }}</p>
+  <p><strong>Owner: </strong>{{ vehicle.owner }}</p>
+  <div class="ml-3">
+    <h3>Mechanics:</h3>
+    {% for mechanic in vehicle.mechanics.all %}
+    	<hr>
+      <p class="text-muted">{{ mechanic.name }}</p>
+      <p>{{ mechanic.speciality }}</p>
+    {% empty %}
+      <p>No Mechanics!</p>
+    {% endfor %}
+    
+  </div>
+{% endblock %}

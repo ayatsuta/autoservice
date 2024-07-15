@@ -31,5 +31,9 @@ class VehicleListView(generic.ListView):
     model = Vehicle
 
 
+class VehicleDetailView(generic.DetailView):
+    model = Vehicle
+
+
 class ClientListView(generic.ListView):
     model = Client
