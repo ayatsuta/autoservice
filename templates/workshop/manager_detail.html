@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Manager: {{ manager.first_name }} {{ manager.last_name }}</h1>
+  <p><strong>Username: </strong>{{ manager.username }}</p>
+  <div class="ml-3">
+    <h3>Vehicles:</h3>
+    <ul>
+      {% for vehicle in manager.vehicles.all %}
+        <li>
+          <strong>Model:</strong> {{ vehicle.model }}<br>
+          <strong>Year:</strong> {{ vehicle.year }}<br>
+          <strong>VIN:</strong> {{ vehicle.VIN }}<br>
+        </li>
+      {% empty %}
+        <li>No vehicles associated with this manager now.</li>
+      {% endfor %}
+    </ul>
+    
+  </div>
+{% endblock %}

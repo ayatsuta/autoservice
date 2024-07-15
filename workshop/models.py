@@ -12,6 +12,9 @@ class Manager(AbstractUser):
     def __str__(self):
         return f"{self.username} : {self.first_name} {self.last_name}"
 
+    def get_absolute_url(self):
+        return reverse("workshop:manager-detail", args=[str(self.id)])
+
 
 class Vehicle(models.Model):
     model = models.CharField(max_length=63)
@@ -52,7 +55,6 @@ class Mechanic(models.Model):
 
     def get_absolute_url(self):
         return reverse("workshop:mechanic-detail", args=[str(self.id)])
-
 
 
 class Client(models.Model):

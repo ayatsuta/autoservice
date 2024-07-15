@@ -23,6 +23,10 @@ class ManagerListView(generic.ListView):
     model = Manager
 
 
+class ManagerDetailView(generic.DetailView):
+    model = Manager
+
+
 class MechanicListView(generic.ListView):
     model = Mechanic
     paginate_by = 10

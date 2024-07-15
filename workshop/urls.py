@@ -7,11 +7,13 @@ from workshop.views import (
     VehicleListView,
     ClientListView,
     ManagerListView,
+    ManagerDetailView,
     VehicleDetailView,
 )
 
 urlpatterns = [
     path("", index, name="index"),
+    path("managers/<int:pk>/", ManagerDetailView.as_view(), name="manager-detail"),
     path("managers/", ManagerListView.as_view(), name="manager-list"),
     path("mechanics/", MechanicListView.as_view(), name="mechanic-list"),
     path("mechanics/<int:pk>/", MechanicDetailView.as_view(), name="mechanic-detail"),
