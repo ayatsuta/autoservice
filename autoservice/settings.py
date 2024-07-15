@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "workshop",
+    "crispy_forms",
+    "crispy_bootstrap4",
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,5 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 AUTH_USER_MODEL = "workshop.Manager"
 
 LOGIN_REDIRECT_URL = "/workshop/"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
