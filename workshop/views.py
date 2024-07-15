@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.views import generic
@@ -19,32 +20,32 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "workshop/index.html", context=context)
 
 
-class ManagerListView(generic.ListView):
+class ManagerListView(LoginRequiredMixin, generic.ListView):
     model = Manager
 
 
-class ManagerDetailView(generic.DetailView):
+class ManagerDetailView(LoginRequiredMixin, generic.DetailView):
     model = Manager
 
 
-class MechanicListView(generic.ListView):
+class MechanicListView(LoginRequiredMixin, generic.ListView):
     model = Mechanic
     paginate_by = 10
 
 
-class VehicleListView(generic.ListView):
+class VehicleListView(LoginRequiredMixin, generic.ListView):
     model = Vehicle
     paginate_by = 10
 
 
-class VehicleDetailView(generic.DetailView):
+class VehicleDetailView(LoginRequiredMixin, generic.DetailView):
     model = Vehicle
 
 
-class ClientListView(generic.ListView):
+class ClientListView(LoginRequiredMixin, generic.ListView):
     model = Client
     paginate_by = 10
 
 
-class MechanicDetailView(generic.DetailView):
+class MechanicDetailView(LoginRequiredMixin, generic.DetailView):
     model = Mechanic
