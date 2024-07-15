@@ -25,10 +25,12 @@ class ManagerListView(generic.ListView):
 
 class MechanicListView(generic.ListView):
     model = Mechanic
+    paginate_by = 10
 
 
 class VehicleListView(generic.ListView):
     model = Vehicle
+    paginate_by = 10
 
 
 class VehicleDetailView(generic.DetailView):
@@ -37,3 +39,4 @@ class VehicleDetailView(generic.DetailView):
 
 class ClientListView(generic.ListView):
     model = Client
+    paginate_by = 10
