@@ -9,12 +9,14 @@ from workshop.views import (
     ClientDetailView,
     ManagerListView,
     ManagerDetailView,
+    ManagerCreateView,
     VehicleDetailView,
 )
 
 urlpatterns = [
     path("", index, name="index"),
     path("managers/<int:pk>/", ManagerDetailView.as_view(), name="manager-detail"),
+    path("managers/create/", ManagerCreateView.as_view(), name="manager-form"),
     path("managers/", ManagerListView.as_view(), name="manager-list"),
     path("mechanics/", MechanicListView.as_view(), name="mechanic-list"),
     path("mechanics/<int:pk>/", MechanicDetailView.as_view(), name="mechanic-detail"),

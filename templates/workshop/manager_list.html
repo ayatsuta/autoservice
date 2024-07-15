@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1> Manager List</h1>
+  <h1> Manager List <a href="{% url 'workshop:manager-form' %}">+</a></h1>
   {% if manager_list %}
     <ul>
     {% for manager in manager_list %}

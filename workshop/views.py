@@ -1,6 +1,7 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
+from django.urls import reverse_lazy
 from django.views import generic
 
 from workshop.models import Manager, Client, Vehicle, Mechanic
@@ -22,6 +23,12 @@ def index(request: HttpRequest) -> HttpResponse:
 
 class ManagerListView(LoginRequiredMixin, generic.ListView):
     model = Manager
+
+
+class ManagerCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Manager
+    fields = "__all__"
+    success_url = reverse_lazy("workshop:manager-list")
 
 
 class ManagerDetailView(LoginRequiredMixin, generic.DetailView):
