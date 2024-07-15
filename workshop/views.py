@@ -3,6 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
+from workshop.forms import ManagerCreationForm
 
 from workshop.models import Manager, Client, Vehicle, Mechanic
 
@@ -27,8 +28,7 @@ class ManagerListView(LoginRequiredMixin, generic.ListView):
 
 class ManagerCreateView(LoginRequiredMixin, generic.CreateView):
     model = Manager
-    fields = "__all__"
-    success_url = reverse_lazy("workshop:manager-list")
+    form_class = ManagerCreationForm
 
 
 class ManagerDetailView(LoginRequiredMixin, generic.DetailView):
