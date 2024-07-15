@@ -40,6 +40,11 @@ class MechanicListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
 
+class MechanicCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Mechanic
+    fields = "__all__"
+    success_url = reverse_lazy("workshop:mechanic-list")
+
 class MechanicDetailView(LoginRequiredMixin, generic.DetailView):
     model = Mechanic
 

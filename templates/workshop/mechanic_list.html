@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1> Mechanic List</h1>
+  <h1> Mechanic List <a href="{% url 'workshop:mechanic-create' %}">+</a></h1>
   {% if mechanic_list %}
     <ul>
     {% for mechanic in mechanic_list %}
