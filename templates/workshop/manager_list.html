@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> Manager List</h1>
+  {% if manager_list %}
+    <ul>
+    {% for manager in manager_list %}
+      <li> {{ manager.first_name }} {{ manager.last_name }} ({{ manager.username }})</li>
+    {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no managers</p>
+  {% endif %}
+{%  endblock %}

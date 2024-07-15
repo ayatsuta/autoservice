@@ -19,6 +19,10 @@ def index(request: HttpRequest) -> HttpResponse:
     return render(request, "workshop/index.html", context=context)
 
 
+class ManagerListView(generic.ListView):
+    model = Manager
+
+
 class MechanicListView(generic.ListView):
     model = Mechanic
 
