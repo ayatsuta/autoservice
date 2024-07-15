@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.urls import reverse
 
 from autoservice import settings
 
@@ -37,6 +38,9 @@ class Vehicle(models.Model):
 
     def __str__(self):
         return f"{self.model} - {self.owner}"
+
+    def get_absolute_url(self):
+        return reverse("workshop:vehicle-detail", args=[str(self.id)])
 
 
 class Mechanic(models.Model):
