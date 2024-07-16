@@ -67,6 +67,12 @@ class VehicleListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
 
+class VehicleCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Vehicle
+    fields = "__all__"
+    success_url = reverse_lazy("workshop:vehicle-list")
+
+
 class VehicleDetailView(LoginRequiredMixin, generic.DetailView):
     model = Vehicle
 

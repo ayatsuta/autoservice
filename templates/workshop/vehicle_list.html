@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1> Vehicle List</h1>
+  <h1> Vehicle List <a href="{% url 'workshop:vehicle-create' %}">+</a></h1>
   {% if vehicle_list %}
     <ul>
     {% for vehicle in vehicle_list %}
