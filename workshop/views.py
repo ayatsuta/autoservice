@@ -45,6 +45,19 @@ class MechanicCreateView(LoginRequiredMixin, generic.CreateView):
     fields = "__all__"
     success_url = reverse_lazy("workshop:mechanic-list")
 
+
+class MechanicUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Mechanic
+    fields = "__all__"
+    success_url = reverse_lazy("workshop:mechanic-list")
+
+
+class MechanicDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Mechanic
+    success_url = reverse_lazy("workshop:mechanic-list")
+    template_name = "workshop/mechanic_confirm_delete.html"
+
+
 class MechanicDetailView(LoginRequiredMixin, generic.DetailView):
     model = Mechanic
 
