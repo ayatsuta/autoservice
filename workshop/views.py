@@ -76,6 +76,24 @@ class ClientListView(LoginRequiredMixin, generic.ListView):
     paginate_by = 10
 
 
+class ClientCreateView(LoginRequiredMixin, generic.CreateView):
+    model = Client
+    fields = "__all__"
+    success_url = reverse_lazy("workshop:client-list")
+
+
+class ClientUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Client
+    fields = "__all__"
+    success_url = reverse_lazy("workshop:client-list")
+
+
+class ClientDeleteView(LoginRequiredMixin, generic.DeleteView):
+    model = Client
+    success_url = reverse_lazy("workshop:client-list")
+    template_name = "workshop/client_delete.html"
+
+
 class ClientDetailView(LoginRequiredMixin, generic.DetailView):
     model = Client
 

@@ -9,6 +9,9 @@ from workshop.views import (
     MechanicDeleteView,
     VehicleListView,
     ClientListView,
+    ClientCreateView,
+    ClientUpdateView,
+    ClientDeleteView,
     ClientDetailView,
     ManagerListView,
     ManagerDetailView,
@@ -29,6 +32,9 @@ urlpatterns = [
     path("vehicles/", VehicleListView.as_view(), name="vehicle-list"),
     path("vehicles/<int:pk>/", VehicleDetailView.as_view(), name="vehicle-detail"),
     path("clients/", ClientListView.as_view(), name="client-list"),
+    path("clients/create", ClientCreateView.as_view(), name="client-create"),
+    path("clients/<int:pk>/update/", ClientUpdateView.as_view(), name="client-update"),
+    path("clients/<int:pk>/delete/", ClientDeleteView.as_view(), name="client-delete"),
     path("clients/<int:pk>/", ClientDetailView.as_view(), name="client-detail"),
 ]
 

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-  <h1> Client List</h1>
+  <h1> Client List <a href="{% url 'workshop:client-create' %}">+</a></h1>
   {% if client_list %}
     <ul>
     {% for client in client_list %}

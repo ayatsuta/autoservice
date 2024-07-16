@@ -65,6 +65,9 @@ class Client(models.Model):
     company = models.CharField(max_length=63, null=True, blank=True)
     phone = models.CharField(max_length=63, null=True, blank=True)
 
+    class Meta:
+        ordering = ("name",)
+
     def __str__(self):
         return f"{self.name} - {self.phone}"
 
