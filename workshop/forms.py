@@ -8,4 +8,4 @@ from workshop.models import Manager
 class ManagerCreationForm(UserCreationForm):
     class Meta(UserCreationForm.Meta):
         model = Manager
-        fields = UserCreationForm.Meta.fields + ("username", "first_name", "last_name",)
+        fields = UserCreationForm.Meta.fields + ("username", "first_name", "last_name")
