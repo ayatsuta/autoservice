@@ -73,6 +73,11 @@ class VehicleCreateView(LoginRequiredMixin, generic.CreateView):
     success_url = reverse_lazy("workshop:vehicle-list")
 
 
+class VehicleUpdateView(LoginRequiredMixin, generic.UpdateView):
+    model = Vehicle
+    fields = "__all__"
+
+
 class VehicleDetailView(LoginRequiredMixin, generic.DetailView):
     model = Vehicle
 
