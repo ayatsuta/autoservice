@@ -5,17 +5,19 @@
   <p><strong>Username: </strong>{{ manager.username }}</p>
   <div class="ml-3">
     <h3>Vehicles:</h3>
-    <ul>
-      {% for vehicle in manager.vehicles.all %}
-        <li>
-          <strong>Model:</strong> {{ vehicle.model }}<br>
-          <strong>Year:</strong> {{ vehicle.year }}<br>
-          <strong>VIN:</strong> {{ vehicle.VIN }}<br>
-        </li>
-      {% empty %}
-        <li>No vehicles associated with this manager now.</li>
-      {% endfor %}
-    </ul>
+    {% if manager.managed_vehicles.exists %}
+      <ul>
+        {% for vehicle in manager.managed_vehicles.all %}
+          <hr>
+          <li>
+            <p class="text-muted">{{ vehicle.model }}</p>
+            <p>VIN: {{ vehicle.VIN }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No vehicles managed by this manager.</p>
+    {% endif %}
     
   </div>
 {% endblock %}

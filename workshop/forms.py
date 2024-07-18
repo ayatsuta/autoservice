@@ -12,7 +12,7 @@ class ManagerCreationForm(UserCreationForm):
 
 
 class VehicleForm(forms.ModelForm):
-    mechanics = forms.ModelChoiceField(
+    mechanics = forms.ModelMultipleChoiceField(
         queryset=Mechanic.objects.all(),
         widget=forms.CheckboxSelectMultiple,
         required=False
