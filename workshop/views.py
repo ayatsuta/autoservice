@@ -3,7 +3,7 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
-from workshop.forms import ManagerCreationForm, VehicleForm
+from workshop.forms import ManagerCreationForm, VehicleForm, VehicleSearchForm
 
 from workshop.models import Manager, Client, Vehicle, Mechanic
 
@@ -64,7 +64,22 @@ class MechanicDetailView(LoginRequiredMixin, generic.DetailView):
 
 class VehicleListView(LoginRequiredMixin, generic.ListView):
     model = Vehicle
+    queryset = Vehicle.objects.select_related("owner")
     paginate_by = 10
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["search_form"] = VehicleSearchForm(
+            initial={"model": self.request.GET.get("model", "")}
+        )
+        return context
+
+    def get_queryset(self):
+        queryset = Vehicle.objects.select_related("owner")
+        form = VehicleSearchForm(self.request.GET)
+        if form.is_valid():
+            return queryset.filter(model__icontains=form.cleaned_data["model"])
+        return queryset
 
 
 class VehicleCreateView(LoginRequiredMixin, generic.CreateView):

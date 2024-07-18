@@ -21,3 +21,16 @@ class VehicleForm(forms.ModelForm):
     class Meta:
         model = Vehicle
         fields = "__all__"
+
+
+class VehicleSearchForm(forms.Form):
+    model = forms.CharField(
+        max_length=255,
+        required=False,
+        label="",
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Search by model"
+            }
+        )
+    )
