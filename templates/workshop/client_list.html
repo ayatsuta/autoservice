@@ -5,7 +5,18 @@
   {% if client_list %}
     <ul>
     {% for client in client_list %}
-      <li><a href="{{ client.get_absolute_url }}">{{ client.name }} {{ client.company }} ({{ client.phone }})</a></li>
+      <li>
+        <a href="{{ client.get_absolute_url }}">
+          {{ client.name }}
+          {% if client.company %}
+            {{ client.company }}
+          {% else %}
+              (private person)
+          {% endif %}
+          ({{ client.phone }})
+        </a>
+      </li>
+      
     {% endfor %}
     </ul>
   {% endif %}
