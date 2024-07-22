@@ -129,4 +129,8 @@ AUTH_USER_MODEL = "workshop.Manager"
 
 LOGIN_REDIRECT_URL = "/workshop/"
 
+LOGOUT_REDIRECT_URL = "/registration/login/"
+
+LOGIN_URL = "/registration/login/"
+
 CRISPY_TEMPLATE_PACK = "bootstrap4"
