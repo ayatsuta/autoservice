@@ -64,7 +64,6 @@ class MechanicDetailView(LoginRequiredMixin, generic.DetailView):
 
 class VehicleListView(LoginRequiredMixin, generic.ListView):
     model = Vehicle
-    queryset = Vehicle.objects.select_related("owner")
     paginate_by = 10
 
     def get_context_data(self, **kwargs):
@@ -77,8 +76,8 @@ class VehicleListView(LoginRequiredMixin, generic.ListView):
     def get_queryset(self):
         queryset = Vehicle.objects.select_related("owner")
         form = VehicleSearchForm(self.request.GET)
-        if form.is_valid():
-            return queryset.filter(model__icontains=form.cleaned_data["model"])
+        if form.is_valid() and form.cleaned_data["model"]:
+            queryset = queryset.filter(model__icontains=form.cleaned_data["model"])
         return queryset
 
 

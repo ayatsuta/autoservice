@@ -7,7 +7,7 @@ register = template.Library()
 def query_transform(request, **kwargs):
     updated = request.GET.copy()
     for k, v in kwargs.items():
-        if v in kwargs.items():
+        if v is not None:
             updated[k] = v
         else:
             updated.pop(k, 0)
