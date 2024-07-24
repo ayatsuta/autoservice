@@ -33,6 +33,7 @@ class Vehicle(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.DO_NOTHING,
         null=True,
+        blank=True,
         related_name="managed_vehicles"
     )
 
