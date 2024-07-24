@@ -15,6 +15,16 @@
       <p>No Mechanics!</p>
     {% endfor %}
     <h3>Manager:</h3>
+    {% if vehicle.manager == request.user %}
+      <a href="{% url 'workshop:toggle-assign-manager' pk=vehicle.pk %}" class="btn btn-danger">
+        Remove from my vehicles
+      </a>
+    {% else %}
+      <a href="{% url 'workshop:toggle-assign-manager' pk=vehicle.pk %}" class="btn btn-success">
+        Assign to me
+      </a>
+    {% endif %}
+  
     {% if vehicle.manager %}
     	<hr>
       <p class="text-muted">{{ vehicle.manager.first_name }} {{ vehicle.manager.last_name }} ({{ vehicle.manager.username }})</p>

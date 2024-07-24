@@ -1,7 +1,8 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import HttpRequest, HttpResponse
-from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
+from django.shortcuts import render, get_object_or_404, redirect
+from django.urls import reverse_lazy, reverse
 from django.views import generic
 from workshop.forms import ManagerCreationForm, VehicleForm, VehicleSearchForm
 
@@ -93,6 +94,20 @@ class VehicleUpdateView(LoginRequiredMixin, generic.UpdateView):
 
 class VehicleDetailView(LoginRequiredMixin, generic.DetailView):
     model = Vehicle
+
+
+@login_required
+def toggle_assign_manager_to_vehicle(request, pk):
+    vehicle = get_object_or_404(Vehicle, pk=pk)
+    user = request.user
+
+    if vehicle.manager == user:
+        vehicle.manager = None
+    else:
+        vehicle.manager = user
+
+    vehicle.save()
+    return redirect(reverse("workshop:vehicle-detail", args=[pk]))
 
 
 class ClientListView(LoginRequiredMixin, generic.ListView):
