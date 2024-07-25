@@ -91,13 +91,21 @@ class MechanicModelTests(TestCase):
 
 
 class ClientModelTests(TestCase):
+    def setUp(self):
+        self.client = Client.objects.create(name="Client 1", phone="5536572324")
+
     def test_client_str(self):
-        client = Client.objects.create(
-            name="test_client",
-            company="test_company",
-            phone="test_phone"
-        )
+
         self.assertEqual(
-            str(client),
-            f"{client.name} - {client.phone}"
+            str(self.client),
+            f"{self.client.name} - {self.client.phone}"
+        )
+
+    def test_get_absolute_url(self):
+        self.assertEqual(
+            self.client.get_absolute_url(),
+            reverse(
+                "workshop:client-detail",
+                args=[str(self.client.id)]
+            )
         )
