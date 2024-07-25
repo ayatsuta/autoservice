@@ -93,3 +93,21 @@ class ToggleAssignManagerToVehicleTests(BaseViewTests):
         self.vehicle.refresh_from_db()
         self.assertEqual(response.status_code, 302)
         self.assertIsNone(self.vehicle.manager)
+
+
+class ClientViewTests(BaseViewTests):
+
+    def test_client_list_view(self):
+        response = self.client.get(reverse("workshop:client-list"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "workshop/client_list.html")
+
+    def test_client_create_view(self):
+        response = self.client.get(reverse("workshop:client-create"))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "workshop/client_form.html")
+
+    def test_client_detail_view(self):
+        response = self.client.get(reverse("workshop:client-detail", args=[self.client_instance.id]))
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, "workshop/client_detail.html")
