@@ -1,10 +1,28 @@
 from django.contrib.auth import get_user_model
 from django.test import TestCase
+from django.urls import reverse
 
 from workshop.models import Vehicle, Client, Mechanic
 
 
 class ManagerModelTests(TestCase):
+    def setUp(self):
+        self.manager = get_user_model().objects.create_user(
+            username="manager1",
+            password="password",
+            first_name="test",
+            last_name="test"
+        )
+
+    def test_get_absolute_url(self):
+        self.assertEqual(
+            self.manager.get_absolute_url(),
+            reverse(
+                "workshop:manager-detail",
+                args=[str(self.manager.id)]
+            )
+        )
+
     def test_manager_str(self):
         manager = get_user_model().objects.create(
             username="test",
