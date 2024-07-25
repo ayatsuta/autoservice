@@ -6,7 +6,7 @@
   <p><strong>VIN: </strong>{{ vehicle.VIN }}</p>
   <p><strong>Owner: </strong>{{ vehicle.owner }}</p>
   <div class="ml-3">
-    <h3>Mechanics:</h3>
+    <h3>Mechanics Assigned for Repair:</h3>
     {% for mechanic in vehicle.mechanics.all %}
     	<hr>
       <p class="text-muted">{{ mechanic.name }}</p>
@@ -29,7 +29,7 @@
     	<hr>
       <p class="text-muted">{{ vehicle.manager.first_name }} {{ vehicle.manager.last_name }} ({{ vehicle.manager.username }})</p>
     {% else %}
-      <p>No Manager!</p>
+      <p>No manager is currently assigned to this vehicle.</p>
     {% endif %}
     
   </div>
