@@ -45,8 +45,13 @@ class VehicleModelTests(TestCase):
         self.vehicle.mechanics.add(self.mechanic)
 
     def test_get_absolute_url(self):
-        self.assertEqual(self.vehicle.get_absolute_url(),
-                         reverse("workshop:vehicle-detail", args=[str(self.vehicle.id)]))
+        self.assertEqual(
+            self.vehicle.get_absolute_url(),
+            reverse(
+                "workshop:vehicle-detail",
+                args=[str(self.vehicle.id)]
+            )
+        )
 
     def test_vehicle_mechanics(self):
         self.assertIn(self.mechanic, self.vehicle.mechanics.all())
@@ -63,16 +68,25 @@ class VehicleModelTests(TestCase):
 
 class MechanicModelTests(TestCase):
     def setUp(self):
-        self.mechanic = Mechanic.objects.create(name="Mechanic1", speciality="General Repair")
+        self.mechanic = Mechanic.objects.create(
+            name="Mechanic1",
+            speciality="General Repair"
+        )
+
+    def test_get_absolute_url(self):
+        self.assertEqual(
+            self.mechanic.get_absolute_url(),
+            reverse(
+                "workshop:mechanic-detail",
+                args=[str(self.mechanic.id)]
+            )
+        )
 
     def test_mechanic_str(self):
-        mechanic = Mechanic.objects.create(
-            name="test_mechanic",
-            speciality="test_speciality"
-        )
+
         self.assertEqual(
-            str(mechanic),
-            f"{mechanic.name} - {mechanic.speciality}"
+            str(self.mechanic),
+            f"{self.mechanic.name} - {self.mechanic.speciality}"
         )
 
 
