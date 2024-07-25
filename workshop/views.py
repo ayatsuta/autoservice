@@ -135,4 +135,3 @@ class ClientDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class ClientDetailView(LoginRequiredMixin, generic.DetailView):
     model = Client
-
