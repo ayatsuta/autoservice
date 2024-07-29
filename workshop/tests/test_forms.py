@@ -1,7 +1,7 @@
 from django.test import TestCase
 
 from workshop.forms import ManagerCreationForm, VehicleForm, VehicleSearchForm
-from workshop.models import Manager, Mechanic, Vehicle, Client
+from workshop.models import Mechanic, Client
 from django.contrib.auth import get_user_model
 
 
@@ -52,3 +52,17 @@ class VehicleFormTest(TestCase):
         form.fields['mechanics'].queryset = Mechanic.objects.all()
 
         self.assertFalse(form.is_valid())
+
+
+class VehicleSearchFormTest(TestCase):
+    def test_form_valid_with_query(self):
+        form_data = {
+            "model": "Test Model"
+        }
+        form = VehicleSearchForm(data=form_data)
+        self.assertTrue(form.is_valid())
+
+    def test_form_valid_without_query(self):
+        form_data = {}
+        form = VehicleSearchForm(data=form_data)
+        self.assertTrue(form.is_valid())
