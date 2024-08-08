@@ -1,0 +1,60 @@
+  <!-- Navbar Light -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+      {% if user.is_authenticated %}
+    <li class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center">User: <a href="{{ user.get_absolute_url }}">{{ user.get_username }}</a></li>
+    
+      <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit" class="btn bg-gradient-primary w-100 my-1 mb-1">Logout</button>
+        <input type="hidden" name="next" value="{{ request.path }}">
+      </form>
+  {% else %}
+      <a href="{% url 'login' %}?next={{ request.path }}">Login</a>
+  {% endif %}
+      <div></div>
+      <button class="navbar-toggler shadow-none ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navigation" aria-controls="navigation" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon mt-2">
+          <span class="navbar-toggler-bar bar1"></span>
+          <span class="navbar-toggler-bar bar2"></span>
+          <span class="navbar-toggler-bar bar3"></span>
+        </span>
+      </button>
+      <div class="collapse navbar-collapse w-100 pt-3 pb-2 py-lg-0" id="navigation">
+        <ul class="navbar-nav navbar-nav-hover mx-auto">
+          <li class="nav-item dropdown dropdown-hover mx-2">
+            <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" href="{% url 'workshop:index' %}">
+              <i class="material-icons opacity-6 me-2 text-md">home</i>
+              Home
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-hover mx-2 ps-lg-4">
+            <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" href="{% url 'workshop:manager-list' %}">
+              <i class="material-icons opacity-6 me-2 text-md">man</i>
+              Managers
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-hover mx-2 ps-lg-4">
+            <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" href="{% url 'workshop:mechanic-list' %}">
+              <i class="material-icons opacity-6 me-2 text-md">build</i>
+              Mechanics
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-hover mx-2 ps-lg-4">
+            <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" href="{% url 'workshop:vehicle-list' %}">
+              <i class="material-icons opacity-6 me-2 text-md">key</i>
+              Vehicles
+            </a>
+          </li>
+          <li class="nav-item dropdown dropdown-hover mx-2 ps-lg-4">
+            <a class="nav-link ps-2 d-flex justify-content-between cursor-pointer align-items-center" href="{% url 'workshop:client-list' %}">
+              <i class="material-icons opacity-6 me-2 text-md">group</i>
+              Clients
+            </a>
+          </li>
+          
+                
+        </ul>
+      </div>
+    </div>
+  </nav>
