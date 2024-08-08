@@ -5,7 +5,7 @@
   <h1> Vehicle List <a href="{% url 'workshop:vehicle-create' %}">+</a></h1>
   <form method="get" action="" class="form-inline">
     {{ search_form|crispy }}
-    <input class="btn btn-secondary" type="submit">
+    <input class="btn btn-secondary" type="submit" value="search">
   </form>
   {% if vehicle_list %}
     <ul>
