@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Delete Mechanic</h1>
+  <p>Are you sure you want to delete this mechanic: {{ mechanic.name }}</p>
+  
+  <form action="" method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete" class="btn btn-danger" />
+    <a href="{% url "workshop:mechanic-detail" mechanic.id %}" class="btn btn-primary">Cancel</a>
+  </form>
+  
+{% endblock %}

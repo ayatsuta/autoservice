@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Manager: {{ manager.first_name }} {{ manager.last_name }}</h1>
+  <p><strong>Username: </strong>{{ manager.username }}</p>
+  <div class="ml-3">
+    <h3>Vehicles:</h3>
+    {% if manager.managed_vehicles.exists %}
+      <ul>
+        {% for vehicle in manager.managed_vehicles.all %}
+          <hr>
+          <li>
+            <p class="text-muted">{{ vehicle.model }}</p>
+            <p>VIN: {{ vehicle.VIN }}</p>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>No vehicles managed by this manager.</p>
+    {% endif %}
+    
+  </div>
+{% endblock %}

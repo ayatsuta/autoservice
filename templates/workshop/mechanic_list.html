@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> Mechanic List <a href="{% url 'workshop:mechanic-create' %}">+</a></h1>
+  {% if mechanic_list %}
+    <ul>
+    {% for mechanic in mechanic_list %}
+      <li><a href="{{ mechanic.get_absolute_url }}">{{ mechanic.name }}</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no mechanics</p>
+  {% endif %}
+{%  endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Client: {{ client.name }}</h1>
+  <p><strong>Company: </strong>{{ client.company }}</p>
+  <div class="ml-3 mb-3">
+    <a href="{% url 'workshop:client-update' client.id %}" class="btn btn-primary">Update</a>
+    <a href="{% url 'workshop:client-delete' client.id %}" class="btn btn-danger">Delete</a>
+  </div>
+  <div class="ml-3">
+    <h3>Vehicles:</h3>
+    <ul>
+      {% for vehicle in client.vehicles.all %}
+        <li>
+          <strong>Model:</strong> {{ vehicle.model }}<br>
+          <strong>Year:</strong> {{ vehicle.year }}<br>
+          <strong>VIN:</strong> {{ vehicle.VIN }}<br>
+        </li>
+      {% empty %}
+        <li>No vehicles associated with this client.</li>
+      {% endfor %}
+    </ul>
+    
+  </div>
+{% endblock %}

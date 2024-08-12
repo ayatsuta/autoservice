@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1>Mechanic: {{ mechanic.name }}</h1>
+  <p><strong>Speciality: </strong>{{ mechanic.speciality }}</p>
+  <div class="ml-3 mb-3">
+    <a href="{% url 'workshop:mechanic-update' mechanic.id %}" class="btn btn-primary">Update</a>
+    <a href="{% url 'workshop:mechanic-delete' mechanic.id %}" class="btn btn-danger">Delete</a>
+  </div>
+  <div class="ml-3">
+    <h3>Vehicles:</h3>
+    <ul>
+      {% for vehicle in mechanic.vehicles.all %}
+        <li>
+          <strong>Model:</strong> {{ vehicle.model }}<br>
+          <strong>Year:</strong> {{ vehicle.year }}<br>
+          <strong>VIN:</strong> {{ vehicle.VIN }}<br>
+        </li>
+      {% empty %}
+        <li>No vehicles associated with this mechanic now.</li>
+      {% endfor %}
+    </ul>
+    
+  </div>
+{% endblock %}

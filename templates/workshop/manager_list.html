@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h1> Manager List <a href="{% url 'workshop:manager-create' %}">+</a></h1>
+  {% if manager_list %}
+    <ul>
+    {% for manager in manager_list %}
+      <li><a href="{{ manager.get_absolute_url }}">{{ manager.first_name }} {{ manager.last_name }} ({{ manager.username }})</a></li>
+    {% endfor %}
+    </ul>
+    {% else %}
+      <p>There are no managers</p>
+  {% endif %}
+{%  endblock %}
